@@ -13,6 +13,7 @@ options {
         listen-on port 53 { 127.0.0.1; 192.168.4.220; };
         allow-query     { localhost; 192.168.4.0/24; };
         directory       "/var/named/bmctest";
+        ## Vergeet directory niet aan te maken!
 };
 
 zone "bmc.test" IN {
@@ -21,8 +22,8 @@ zone "bmc.test" IN {
 };
 
 zone "4.168.192.in-addr.arpa" in {
-  type master;
-  file "/var/named/4.168.192.db";
+        type master;
+        file "/var/named/4.168.192.db";
 };
 ```
 ## /var/named/bmc.test.db
