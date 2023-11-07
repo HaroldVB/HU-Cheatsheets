@@ -1,5 +1,6 @@
 ## Welke files waarvoor in de profielen
 ### Login shells
+```
 File                        Voor wie                  Wanneer
 - /etc/profile      =       alle gebruikers           alle shells
 - ~/bash_profile    =       gebruikerspecifiek        alleen bash
@@ -8,4 +9,5 @@ File                        Voor wie                  Wanneer
 ### Non-login shells
 File                        Voor wie                  Wanneer
 - /etc/bashrc       =       alle agebruikers          interactieve bash
-- ~/.bashrc         =       gebruikerspecifiek        interactieve bash    
+- ~/.bashrc         =       gebruikerspecifiek        interactieve bash 
+```
