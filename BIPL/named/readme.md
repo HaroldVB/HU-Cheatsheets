@@ -1,14 +1,5 @@
 ## /etc/named.conf
 ```
-//
-// named.conf
-//
-// Provided by Red Hat bind package to configure the ISC BIND named(8) DNS
-// server as a caching only nameserver (as a localhost DNS resolver only).
-//
-// See /usr/share/doc/bind*/sample/ for example named configuration files.
-//
-
 options {
         listen-on port 53 { 127.0.0.1; 192.168.4.220; };
         allow-query     { localhost; 192.168.4.0/24; };
@@ -27,7 +18,7 @@ zone "4.168.192.in-addr.arpa" in {
 };
 ```
 ## /var/named/bmc.test.db
-```
+```conf
 $TTL 5M
 @       IN       SOA     rocky1.bmc.test. hostmaster.bmc.test. (
                                         2023100604      ; serial
@@ -43,7 +34,7 @@ rhel1.bmc.test.         IN      A       192.168.4.219
 www.bmc.test.           IN      CNAME   rocky1.bmc.test.
 ```
 ## /var/named/4.168.192.db
-```
+```conf
 $TTL 5M
 @       IN      SOA     rocky1.bmc.test.        hostmaster.bmc.test. (
                         2023100401  ; Serial Number (YYYYMMDDNN)
@@ -57,4 +48,12 @@ $TTL 5M
 220     IN      PTR     rocky1.bmc.test.
 254     IN      PTR     bmc-dc-01.bmc.test.
 ```
-
+## Firewall rule
+```bash
+sudo firewall-cmd --runtime-to-permanent --add-service=dns
+sudo firewall-cmd --reload
+```
+## DNS test
+`dig +noall +answer rocky1.bmc.test @127.0.0.1`
+## Config test
+`sudo -u named named-checkconf -z`
