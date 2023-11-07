@@ -27,7 +27,7 @@ $TTL 5M
                                         30D     ; expire
                                         1M )    ; minimum
 
-        IN      NS      rocky1.bmc.test.
+                        IN      NS      rocky1.bmc.test.
 
 rocky1.bmc.test.        IN      A       192.168.4.220
 rhel1.bmc.test.         IN      A       192.168.4.219
